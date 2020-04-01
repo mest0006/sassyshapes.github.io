@@ -2,6 +2,7 @@
  * STARTER CODE
  **********************************************/
 
+
 .shapes {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -120,3 +121,205 @@ octagon;
 /**********************************************
  * YOUR CODE BELOW
  **********************************************/
+
+@mixin square ($color) {
+  @extend %square;
+  width: 100px;
+  height: 100px;
+  background-color: $color;
+}
+
+@mixin circle ($color) {
+  @extend %circle;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: $color;
+}
+
+@mixin pentagon ($color) {
+  @extend %pentagon;
+  position: relative;
+  width: 54px;
+  box-sizing: content-box;
+  border-width: 50px 18px 0;
+  border-style: solid;
+  border-color: $color transparent;
+
+  &::before {
+    content: "";
+    position: absolute;
+    height: 0;
+    width: 0;
+    top: -85px;
+    left: -18px;
+    border-width: 0 45px 35px;
+    border-style: solid;
+    border-color: transparent transparent $color;
+  }
+}
+
+@mixin hexagon ($color) {
+  @extend %hexagon;
+  width: 100px;
+  height: 55px;
+  position: relative;
+  background: $color;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -25px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 25px solid $color;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -25px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-top: 25px solid $color;
+  }
+}
+
+@mixin octagon ($color) {
+
+  @extend %octagon;
+  width: 100px;
+  height: 100px;
+  position: relative;
+  background: $color;
+
+  &::before {
+    content: "";
+    width: 42px;
+    height: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-left: 29px solid #fff;
+    border-right: 29px solid #fff;
+    border-bottom: 29px solid $color;
+  }
+
+  &::after {
+    content: "";
+    width: 42px;
+    height: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-left: 29px solid #fff;
+    border-right: 29px solid #fff;
+    border-top: 29px solid $color;
+  }
+}
+
+.square-red {
+  @include square(red);
+}
+
+.square-blue {
+  @include square(blue);
+}
+
+.square-green {
+  @include square(green);
+}
+
+.square-purple {
+  @include square(purple);
+}
+
+.square-orange {
+  @include square(orange);
+}
+
+.circle-red {
+  @include circle(red);
+}
+
+.circle-blue {
+  @include circle(blue);
+}
+
+.circle-green {
+  @include circle(green);
+}
+
+.circle-purple {
+  @include circle(purple);
+}
+
+.circle-orange {
+  @include circle(orange);
+}
+
+.pentagon-red {
+  @include pentagon(red);
+}
+
+.pentagon-blue {
+  @include pentagon(blue);
+}
+
+.pentagon-green {
+  @include pentagon(green);
+}
+
+.pentagon-purple {
+  @include pentagon(purple);
+}
+
+.pentagon-orange {
+  @include pentagon(orange);
+}
+
+.hexagon-red {
+  @include hexagon(red);
+}
+
+.hexagon-blue {
+  @include hexagon(blue);
+}
+
+.hexagon-green {
+  @include hexagon(green);
+}
+
+.hexagon-purple {
+  @include hexagon(purple);
+}
+
+.hexagon-orange {
+  @include hexagon(orange);
+}
+
+.octagon-red {
+  @include octagon(red);
+}
+
+.octagon-blue {
+  @include octagon(blue);
+}
+
+.octagon-green {
+  @include octagon(green);
+}
+
+.octagon-purple {
+  @include octagon(purple);
+}
+
+.octagon-orange {
+  @include octagon(orange);
+}
